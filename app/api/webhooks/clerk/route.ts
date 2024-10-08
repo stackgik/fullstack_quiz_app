@@ -9,6 +9,7 @@ export const POST = async (req: Request) => {
 
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
+  console.log(WEBHOOK_SECRET);
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
@@ -18,6 +19,8 @@ export const POST = async (req: Request) => {
 
   // Get the headers
   const headerPayload = headers();
+  console.log(headerPayload);
+
   const svix_id = headerPayload.get('svix-id');
   const svix_timestamp = headerPayload.get('svix-timestamp');
   const svix_signature = headerPayload.get('svix-signature');
@@ -32,6 +35,7 @@ export const POST = async (req: Request) => {
   // Get the body
   const payload = await req.json();
   const body = JSON.stringify(payload);
+  console.log(body);
 
   // Create a new Svix instance with your secret.
   const wh = new Webhook(WEBHOOK_SECRET);
@@ -67,6 +71,7 @@ export const POST = async (req: Request) => {
     };
 
     const newUser = await createUser(user);
+    console.log(newUser);
 
     if (newUser) {
       // clerkId: This is the unique identifier for the user in Clerk's system (the user whose metadata you want to update). This clerkId is passed to identify the specific Clerk user.

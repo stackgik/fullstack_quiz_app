@@ -4,20 +4,19 @@
 
 @layer base {
   /*# global styles */
-  body {
-    /* font-family: var(--font-sans), sans-serif; */
+  /* body {
     font-size: 1.7rem;
   }
 
   html {
     font-size: 62.5%;
-  }
+  } */
 }
 
 @layer components {
   /*# shadcn ui components */
   .shad-button {
-    @apply py-8 px-16 capitalize rounded-[50px] text-[1.5rem] !important;
+    @apply py-6 px-10 capitalize rounded-[50px] text-[1.2rem] !important;
   }
 }
 

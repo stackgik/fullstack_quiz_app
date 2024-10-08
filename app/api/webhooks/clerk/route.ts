@@ -5,6 +5,8 @@ import { createUser } from '@/lib/actions/user.actions';
 import { NextResponse } from 'next/server';
 
 export const POST = async (req: Request) => {
+  console.log('Route is hit, call 911!');
+
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
@@ -82,5 +84,5 @@ export const POST = async (req: Request) => {
   console.log(`Webhook with and ID of ${clerkId} and type of ${eventType}`);
   console.log('Webhook body:', body);
 
-  return new Response('', { status: 200 });
+  return NextResponse.json({ message: 'Webhook received' }, { status: 200 });
 };
